@@ -1,16 +1,41 @@
 import java.awt.desktop.PreferencesEvent;
+import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
-//        String s = "ab##";
-//        String t = "c#d#";
-//        System.out.println(new Solution().backspaceCompare(s, t));
+        String s = "ab##";
+        String t = "c#d#";
+        System.out.println(new Solution().backspaceCompare(s, t));
 
 
     }
 }
 
-// brushhing up on String builder first.
+class Solution {
+    public boolean backspaceCompare(String s, String t) {
+        Stack<Character> stack1 = new Stack<>();
+        Stack<Character> stack2 = new Stack<>();
+
+        stack1 = buildStack(s, stack1);
+        stack2 = buildStack(t, stack2);
+
+        return stack1.equals(stack2);
+    }
+
+    public Stack buildStack(String e, Stack x) {
+        for (int i = 0; i < e.length(); i++) {
+            char c = e.charAt(i);
+            if (!x.isEmpty() && c == '#') x.pop();
+            else {
+                if (c != '#')
+                    x.push(c);
+            }
+        }
+        return x;
+    }
+}
+
+// brushhing up on String builder first. this doesn't work in leetcode but works here. not sure why
 class Solution {
     public boolean backspaceCompare(String s, String t) {
         StringBuilder a = new StringBuilder();
