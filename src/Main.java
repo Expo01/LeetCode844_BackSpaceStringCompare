@@ -6,11 +6,15 @@ public class Main {
         String s = "ab##";
         String t = "c#d#";
         System.out.println(new Solution().backspaceCompare(s, t));
-
-
     }
 }
-
+//create an 2 empty stacks
+// assign each stack to an instancee of helper method buildStack(string,stack)
+// for loop where i<string.length, define char c as string.charAt(i)
+// if stack != empty and c == #, then stack.pop
+// elsee if c != #, stack.push
+// return the stack to backspaceComparee method
+// rreeturn stack1.equals(stack2)
 class Solution {
     public boolean backspaceCompare(String s, String t) {
         Stack<Character> stack1 = new Stack<>();
@@ -35,37 +39,40 @@ class Solution {
     }
 }
 
-// brushhing up on String builder first. this doesn't work in leetcode but works here. not sure why
-class Solution {
-    public boolean backspaceCompare(String s, String t) {
-        StringBuilder a = new StringBuilder();
-        StringBuilder b = new StringBuilder();
 
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) != '#') {
-                a.append(s.charAt(i));
-            } else {
-                if (a.length() > 0) {
-                    a.deleteCharAt(a.length() - 1);
-                }
-            }
-        }
-        for (int i = 0; i < t.length(); i++) {
-            if (t.charAt(i) != '#') {
-                b.append(t.charAt(i));
-            } else {
-                if (b.length() > 0) {
-                    b.deleteCharAt(b.length() - 1);
-                }
-            }
-        }
-        return a.toString().equals(b.toString());
-//        return a.equals(b);
-        // .equals can't be used on StringBuilder or objects. compares memory addreess. will always be false
-        // .equals will compare data of two Strings, not their addresses, so it works for Strings
-        // must comparee conversion
-    }
-}
+//}
+//
+//// brushhing up on String builder first. this doesn't work in leetcode but works here. not sure why
+//class Solution {
+//    public boolean backspaceCompare(String s, String t) {
+//        StringBuilder a = new StringBuilder();
+//        StringBuilder b = new StringBuilder();
+//
+//        for (int i = 0; i < s.length(); i++) {
+//            if (s.charAt(i) != '#') {
+//                a.append(s.charAt(i));
+//            } else {
+//                if (a.length() > 0) {
+//                    a.deleteCharAt(a.length() - 1);
+//                }
+//            }
+//        }
+//        for (int i = 0; i < t.length(); i++) {
+//            if (t.charAt(i) != '#') {
+//                b.append(t.charAt(i));
+//            } else {
+//                if (b.length() > 0) {
+//                    b.deleteCharAt(b.length() - 1);
+//                }
+//            }
+//        }
+//        return a.toString().equals(b.toString());
+////        return a.equals(b);
+//        // .equals can't be used on StringBuilder or objects. compares memory addreess. will always be false
+//        // .equals will compare data of two Strings, not their addresses, so it works for Strings
+//        // must comparee conversion
+//    }
+//}
 
 
 //// the problem is not about length. its asking for string comparison
